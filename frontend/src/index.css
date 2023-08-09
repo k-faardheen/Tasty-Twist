@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;500;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    height: 100vh;
+    font-family: "Poppins";
+    background-color: #f2f2f0;
+  }
+
+  /* #b61e1f;  */
+}
