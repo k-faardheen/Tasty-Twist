@@ -3,16 +3,23 @@ import Display from "./Display";
 import { useState } from "react";
 
 const Home = () => {
-  const [allIngredients, setAllIngredients] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [fetched, hasFetched] = useState(false);
+
+  console.log("Recipes: ", recipes);
   return (
-    <div className="home flex items-center mt-14">
+    <div className="home flex mt-14">
       <UserInput
-        allIngredients={allIngredients}
-        setAllIngredients={setAllIngredients}
         setIsLoading={setIsLoading}
+        setRecipes={setRecipes}
+        hasFetched={hasFetched}
       />
-      {!isLoading ? <Display /> : <p> Loading...</p>}
+      {!isLoading ? (
+        <Display recipes={recipes} fetched={fetched} />
+      ) : (
+        <p> Loading...</p>
+      )}
     </div>
   );
 };

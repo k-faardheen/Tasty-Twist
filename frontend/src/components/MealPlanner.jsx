@@ -1,5 +1,7 @@
+import Board from "./Board";
+
 const MealPlanner = () => {
-  return <h2>meal planner</h2>;
+  return <Board />;
 };
 
 export default MealPlanner;

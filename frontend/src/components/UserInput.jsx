@@ -4,12 +4,15 @@ import ReactPaginate from "react-paginate";
 import ChevronRightIcon from "@heroicons/react/24/outline/ChevronRightIcon";
 import ChevronLeftIcon from "@heroicons/react/24/outline/ChevronLeftIcon";
 
-const UserInput = ({ allIngredients, setAllIngredients, setIsLoading }) => {
+const UserInput = ({
+  setIsLoading,
+  setRecipes,
+  hasFetched: hasFetchedRecipe,
+}) => {
   const [ingredients, setIngredients] = useState(null);
-  const [count, setCount] = useState([]);
+  const [allIngredients, setAllIngredients] = useState([]);
   const [hasFetched, setHasFetched] = useState(false);
   const [pages, setPages] = useState(0);
-  // const [query, setQuery] = useState(null);
   const [pageNumber, setPageNumber] = useState(0);
   const pageCount = 3;
   const pageVisited = pageNumber * pageCount;
@@ -39,7 +42,6 @@ const UserInput = ({ allIngredients, setAllIngredients, setIsLoading }) => {
       ));
   };
 
-  console.log("all ingredients: ", allIngredients);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
@@ -48,17 +50,14 @@ const UserInput = ({ allIngredients, setAllIngredients, setIsLoading }) => {
     e.preventDefault();
     setIsLoading(true);
     const form = e.target;
-    fetch(form.action, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ selectedIngredients: allIngredients }),
-    })
+    fetch(form.action)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
+        setRecipes(data);
+        hasFetchedRecipe(true);
+        setIsLoading(false);
         console.log(data);
       })
       .catch((err) => {
@@ -68,7 +67,7 @@ const UserInput = ({ allIngredients, setAllIngredients, setIsLoading }) => {
 
   return (
     <div className="w-1/2">
-      <div className="user__input__container bg-[#b61e1f;] text-[#f2f2f0] rounded-r-3xl">
+      <div className="user__input__container bg-[#b61e1f] text-[#f2f2f0] rounded-r-3xl">
         <p className="p-4 text-center font-semibold">
           Hey! What are you feeling like eating today? 😋
         </p>
@@ -77,8 +76,10 @@ const UserInput = ({ allIngredients, setAllIngredients, setIsLoading }) => {
         </div>
 
         <form
-          action="http://localhost:8080/Tasty-Twist/backend/api/ingredients"
-          method="POST"
+          action={`http://localhost:8080/Tasty-Twist/backend/recipe.php?ingredients=${allIngredients
+            .join(",")
+            .replaceAll(" ", "+")}`}
+          method="GET"
           onSubmit={(e) => handleSubmit(e)}
         >
           <div className="ingredients__wrapper p-4">
@@ -93,7 +94,7 @@ const UserInput = ({ allIngredients, setAllIngredients, setIsLoading }) => {
                   pageCount={pages}
                   onPageChange={changePage}
                   containerClassName={"pagination p-10"}
-                  pageClassName={"mx-2 "}
+                  pageClassName={"mx-2"}
                   previousLinkClassName={"previousBtn"}
                   nextLinkClassName={"nextBtn"}
                   disabledClassName={"paginationDisabled opacity-50"}
