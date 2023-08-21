@@ -8,7 +8,7 @@ const sendPatchRequest = (recipe, id) => {
     5: "Friday",
   };
 
-  fetch("http://localhost:8080/Tasty-Twist/backend/api/recipe", {
+  fetch("http://localhost/Tasty-Twist/backend/api/recipe", {
     method: "PATCH",
     body: JSON.stringify({
       recipe,

@@ -12,7 +12,7 @@ const Recipes = ({ recipes }) => {
     });
     console.log(id, title, image, formattedIngredients);
 
-    fetch("http://localhost:8080/Tasty-Twist/backend/api/recipe", {
+    fetch("http://localhost/Tasty-Twist/backend/api/recipe", {
       method: "POST",
       body: JSON.stringify({
         id,

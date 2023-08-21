@@ -3,6 +3,9 @@ require('./vendor/autoload.php');
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 
+require('cors.php');
+cors();
+
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__); // Assuming .env is in the same directory

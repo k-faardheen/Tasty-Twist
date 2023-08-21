@@ -11,4 +11,8 @@ export default {
     title: "Quick Recipe",
     url: "quick-recipe",
   },
+  SignUp: {
+    title: "Create Account",
+    url: "SignUp",
+  },
 };
