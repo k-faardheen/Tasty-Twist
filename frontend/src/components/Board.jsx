@@ -9,7 +9,7 @@ const Board = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/Tasty-Twist/backend/api/recipe")
+    fetch("http://localhost/Tasty-Twist/backend/api/recipe")
       .then((res) => {
         return res.json();
       })

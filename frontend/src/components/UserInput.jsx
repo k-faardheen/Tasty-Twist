@@ -18,7 +18,7 @@ const UserInput = ({
   const pageVisited = pageNumber * pageCount;
 
   useEffect(() => {
-    fetch("http://localhost:8080/Tasty-Twist/backend/consumeListIngredient.php")
+    fetch("http://localhost/Tasty-Twist/backend/consumeListIngredient.php")
       .then((res) => res.json())
       .then((data) => {
         setIngredients(data);
@@ -76,7 +76,7 @@ const UserInput = ({
         </div>
 
         <form
-          action={`http://localhost:8080/Tasty-Twist/backend/recipe.php?ingredients=${allIngredients
+          action={`http://localhost/Tasty-Twist/backend/recipe.php?ingredients=${allIngredients
             .join(",")
             .replaceAll(" ", "+")}`}
           method="GET"

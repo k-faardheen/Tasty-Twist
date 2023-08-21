@@ -13,7 +13,7 @@ const SavedRecipe = () => {
   const pageVisited = pageNumber * pageCount;
 
   useEffect(() => {
-    fetch("http://localhost:8080/Tasty-Twist/backend/api/recipe")
+    fetch("http://localhost/Tasty-Twist/backend/api/recipe")
       .then((res) => {
         return res.json();
       })
@@ -33,7 +33,7 @@ const SavedRecipe = () => {
     console.log(updatedRecipe);
     setRecipes(updatedRecipe);
 
-    fetch("http://localhost:8080/Tasty-Twist/backend/api/recipe", {
+    fetch("http://localhost/Tasty-Twist/backend/api/recipe", {
       method: "DELETE",
       body: JSON.stringify({
         id,

@@ -4,6 +4,8 @@ require_once('./lib/nusoap.php');
 
 function fetchIngredients()
 {
+
+    
     global $conn;
 
     $chicken_sql = 'SELECT * FROM Chickens';
@@ -54,4 +56,7 @@ $server->register(
 );
 
 $server->service(file_get_contents('php://input'));
+
+
+
 ?>
