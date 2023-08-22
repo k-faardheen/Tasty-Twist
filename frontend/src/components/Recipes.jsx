@@ -6,7 +6,7 @@ import ReactPaginate from "react-paginate";
 import { AnimatePresence, motion } from "framer-motion";
 import PopUpCard from "./PopUpCard";
 
-const Recipes = ({ recipes }) => {
+const Recipes = ({ recipes, setShowModal, setShowAlert }) => {
   const [hasAdded, setHasAdded] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [pages, setPages] = useState(0);
@@ -49,6 +49,7 @@ const Recipes = ({ recipes }) => {
       .then((data) => {
         console.log(data);
         setHasAdded(true);
+        setShowAlert(true);
       })
       .catch((err) => console.log(err));
   };
@@ -67,10 +68,9 @@ const Recipes = ({ recipes }) => {
 
               return (
                 <motion.div
-                  className="recipe h-44 bg-white mx-2 mb-3 flex items-center justify-center p-4 rounded-3xl shadow-sm hover:shadow-lg"
+                  className="recipe h-44 bg-white mx-2 mb-3 flex items-center justify-center p-4 rounded-3xl shadow-sm hover:shadow-lg cursor-pointer"
                   key={i}
                   layoutId={i}
-                  onClick={() => {}}
                 >
                   <motion.img
                     src={image}
@@ -78,7 +78,14 @@ const Recipes = ({ recipes }) => {
                     className="w-1/4 h-36 rounded-3xl object-cover"
                   />
                   <motion.div className="recipe__details mx-5 p-2 w-3/4">
-                    <motion.h3 className="font-bold mb-2">{title}</motion.h3>
+                    <motion.h3
+                      className="font-bold mb-2 hover:text-[#b61e1f]"
+                      onClick={() =>
+                        setShowModal([true, { title, image, ingredients }])
+                      }
+                    >
+                      {title}
+                    </motion.h3>
                     <motion.div>
                       {Object.keys(ingredients).map((key, index) => {
                         if (index < 1) {
@@ -95,25 +102,20 @@ const Recipes = ({ recipes }) => {
                             }
                           });
                         } else if (index === 1) {
-                          return <motion.p>...</motion.p>;
+                          return (
+                            <motion.p className="text-gray-700">...</motion.p>
+                          );
                         }
                         return null;
                       })}
                     </motion.div>
                     <motion.button
-                      className={`${
-                        !hasAdded
-                          ? `text-[#f2f2f0] bg-[#b61e1f]`
-                          : `bg-[#f2f2f0] text-[#b61e1f]`
-                      } text-sm float-right flex rounded-full p-2 hover:bg-[#f2f2f0] hover:text-[#b61e1f] hover:ease-out duration-200`}
+                      className="text-[#f2f2f0] bg-[#b61e1f] text-sm float-right flex rounded-full p-2 hover:bg-[#f2f2f0] hover:text-[#b61e1f] hover:ease-out duration-200"
+                      onClick={() =>
+                        handleClick({ id, title, image, ingredients })
+                      }
                     >
-                      <HeartIcon
-                        width={20}
-                        height={20}
-                        onClick={() =>
-                          handleClick({ id, title, image, ingredients })
-                        }
-                      />
+                      <HeartIcon width={20} height={20} />
                     </motion.button>
                   </motion.div>
                 </motion.div>

@@ -1,6 +1,6 @@
 import image from "../assets/burger.png";
 import Recipes from "./Recipes";
-const Display = ({ recipes, fetched }) => {
+const Display = ({ recipes, fetched, setShowModal, setShowAlert }) => {
   return (
     <div className="display w-1/2">
       {!fetched ? (
@@ -8,7 +8,11 @@ const Display = ({ recipes, fetched }) => {
           <img src={image} alt="" className="w-4/5 h-1/2 mx-auto" />
         </div>
       ) : (
-        <Recipes recipes={recipes} />
+        <Recipes
+          recipes={recipes}
+          setShowModal={setShowModal}
+          setShowAlert={setShowAlert}
+        />
       )}
     </div>
   );

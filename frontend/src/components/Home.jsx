@@ -1,7 +1,10 @@
 import UserInput from "./UserInput";
 import Display from "./Display";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import CheckCircleIcon from "@heroicons/react/24/outline/CheckCircleIcon";
+import Modal from "./Modal";
+import Alert from "./Alert";
 
 const loadingVariants = {
   hidden: {
@@ -41,10 +44,27 @@ const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [fetched, hasFetched] = useState(false);
+  const [showModal, setShowModal] = useState([false, {}]);
+  const [showAlert, setShowAlert] = useState(false);
 
-  console.log("Recipes: ", recipes);
+  useEffect(() => {
+    console.log("use effect triggered");
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 1300);
+  }, [showAlert]);
+
   return (
     <div className="home flex mt-14">
+      <Alert
+        showAlert={showAlert}
+        setShowAlert={setShowAlert}
+        icon={
+          <CheckCircleIcon width={40} height={40} className=" text-green-500" />
+        }
+        text={"Added to My Recipe!"}
+      />
+      <Modal showModal={showModal} setShowModal={setShowModal} />
       <UserInput
         setIsLoading={setIsLoading}
         setRecipes={setRecipes}
@@ -52,7 +72,12 @@ const Home = () => {
       />
       <AnimatePresence>
         {!isLoading ? (
-          <Display recipes={recipes} fetched={fetched} isLoading={isLoading} />
+          <Display
+            recipes={recipes}
+            fetched={fetched}
+            setShowModal={setShowModal}
+            setShowAlert={setShowAlert}
+          />
         ) : (
           <motion.div
             className="flex items-center justify-center text-lg font-semibold w-1/2 flex-col"

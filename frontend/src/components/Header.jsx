@@ -22,11 +22,6 @@ const Header = () => {
         </nav>
         <div className="right-nav">
           <div className="link text-sm flex items-center">
-            <div className="user__icon mx-4 px-5">
-              <Link to="/">
-                <UserIcon width={20} height={20} />
-              </Link>
-            </div>
             <div className="meal__planner font-bold py-2 px-5 border-solid border-2 border-[#b61e1f] rounded-md">
               <Link to="meal-planner">Meal Planner </Link>
             </div>
