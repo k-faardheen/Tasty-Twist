@@ -4,7 +4,6 @@ import ChevronRightIcon from "@heroicons/react/24/outline/ChevronRightIcon";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { AnimatePresence, motion } from "framer-motion";
-import PopUpCard from "./PopUpCard";
 
 const Recipes = ({ recipes, setShowModal, setShowAlert }) => {
   const [hasAdded, setHasAdded] = useState(false);

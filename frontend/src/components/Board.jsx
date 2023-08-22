@@ -1,6 +1,6 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
-import { easeInOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import XCircleIcon from "@heroicons/react/24/outline/XCircleIcon";
 import logo from "../assets/avatar.png";
 import Column from "./Column";
