@@ -1,7 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import Card from "./Card";
 
-const Column = ({ id, recipes, index: colIdx }) => {
+const Column = ({ id, recipes, index: colIdx, setShowModal, handleDelete }) => {
   const nameMapping = {
     "to-try": "Saved-Recipe",
     monday: "Monday",
@@ -32,6 +32,8 @@ const Column = ({ id, recipes, index: colIdx }) => {
           >
             {(provided) => (
               <Card
+                setShowModal={setShowModal}
+                handleDelete={handleDelete}
                 recipe={recipe}
                 index={index}
                 id={id}

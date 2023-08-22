@@ -7,10 +7,6 @@ export default {
     title: "My Recipe",
     url: "my-recipe",
   },
-  quickRecipe: {
-    title: "Quick Recipe",
-    url: "quick-recipe",
-  },
   SignUp: {
     title: "Create Account",
     url: "SignUp",

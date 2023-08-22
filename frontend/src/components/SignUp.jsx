@@ -22,11 +22,10 @@ const SignUp = () => {
     fetchData();
   }, []);
 
-
   return (
     <>
       <div className="bg-gray-100 flex justify-center items-center h-auto">
-        <div className="bg-white p-8 rounded-md shadow-md w-max mt-10 mb-20">
+        <div className="bg-white p-8 rounded-md shadow-md w-3/5 mt-10 mb-20">
           <h1 className="text-2xl font-semibold mb-4">Create an Account</h1>
           <form>
             <div className="mb-4">
@@ -167,7 +166,6 @@ const SignUp = () => {
                     //console.log(country.sName)
                     <option key={country.sName}>{country.sName}</option>
                   ))}
-
                 </select>
               </div>
             </div>
