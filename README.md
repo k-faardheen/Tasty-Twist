@@ -10,7 +10,7 @@ Tasty-Twist, a recipe finder application developed as an assignment project for 
 ### ✨ Demo
 
 <p align="center"> 
-  <img src="frontend/src/assets/demo video.mp4" alt="Tasty Twist Demo" />
+  <img src="frontend/src/assets/demo video.gif" alt="Tasty Twist Demo" />
 </p>
 
 ## Technology Stack
