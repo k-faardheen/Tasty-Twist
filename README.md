@@ -2,7 +2,7 @@
 
 ### Description
 
-Tasty-Twist, a recipe finder application developed as an assignment project for the module "Internet Technologies and Web Services." The spark for Tasty-Twist was ignited by our admiration for one of our most beloved lecturers, Zahra where we eventually re-named our project to Zahra's Kitchen. This project was crafted with the aim to both create and consume a SOAP service as well as to develop and utilize a REST API.
+Tasty-Twist, a recipe finder application developed as an assignment project for the module "Internet Technologies and Web Services". This project was crafted with the aim to both create and consume a SOAP service as well as to develop and utilize a REST API.
 <p align="center"> 
   <img src="frontend/src/assets/home page.png" alt="Home Page" />
 </p>
